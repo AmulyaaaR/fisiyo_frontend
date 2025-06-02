@@ -36,83 +36,73 @@ const LandingPage = () => {
 
       {/* Hero Section */}
       <section className="text-center px-8 py-24 max-w-6xl mx-auto relative min-h-screen flex flex-col justify-center">
-        {/* Floating Icons positioned like in the reference image */}
-        <div className="absolute top-28 left-20 floating-icon">
-          <svg className="w-24 h-24 opacity-40" style={{ color: 'hsl(var(--charcoal))' }} viewBox="0 0 140 140" fill="none" stroke="currentColor" strokeWidth="1.5">
-            <ellipse cx="70" cy="70" rx="60" ry="25" />
-            <ellipse cx="70" cy="70" rx="60" ry="25" transform="rotate(60 70 70)" />
-            <ellipse cx="70" cy="70" rx="60" ry="25" transform="rotate(120 70 70)" />
-            <circle cx="70" cy="70" r="5" fill="currentColor" />
-          </svg>
-        </div>
-        
-        <div className="absolute top-20 right-24 floating-icon">
-          <svg className="w-20 h-20 opacity-45" style={{ color: 'hsl(var(--charcoal))' }} viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.8">
-            <circle cx="50" cy="35" r="10" />
-            <circle cx="35" cy="55" r="7" />
-            <circle cx="65" cy="55" r="7" />
-            <circle cx="40" cy="75" r="5" />
-            <circle cx="60" cy="75" r="5" />
-            <path d="M42 45 Q50 50 58 45" />
-            <path d="M38 65 Q50 70 62 65" />
-            <circle cx="50" cy="50" r="2" fill="currentColor" />
-          </svg>
-        </div>
-        
-        <div className="absolute top-16 right-12 floating-icon">
-          <svg className="w-28 h-28 opacity-40" style={{ color: 'hsl(var(--charcoal))' }} viewBox="0 0 140 140" fill="currentColor">
-            <path d="M45 45 Q45 25 70 25 Q95 25 95 45 Q95 65 70 65 Q45 65 45 45" />
-            <path d="M55 75 Q70 70 85 75" stroke="currentColor" strokeWidth="4" fill="none" />
-            <path d="M50 85 Q70 80 90 85" stroke="currentColor" strokeWidth="4" fill="none" />
-            <path d="M55 95 Q70 90 85 95" stroke="currentColor" strokeWidth="4" fill="none" />
-            <circle cx="70" cy="45" r="15" fill="white" />
-            <path d="M62 38 Q70 30 78 38 Q78 48 70 55 Q62 48 62 38" fill="currentColor" />
-            <circle cx="70" cy="110" r="5" fill="currentColor" />
-            <circle cx="70" cy="120" r="3" fill="currentColor" />
-            <circle cx="70" cy="128" r="1.5" fill="currentColor" />
-          </svg>
-        </div>
-    
-        <div className="absolute top-12 right-6 floating-icon">
-          <div className="w-5 h-5 rounded-sm bg-current opacity-60" style={{ color: 'hsl(var(--charcoal))' }}></div>
-        </div>
-    
-        {/* Main Content */}
-        <div className="relative z-10 mt-20">
-          {/* Main Heading */}
-          <div className="mb-16">
-            <h1 className="font-serif text-4xl md:text-4xl lg:text-5xl xl:text-7xl mb-8 leading-[1.1] italic font-light tracking-wide" style={{ color: 'hsl(var(--charcoal))' }}>
-              Where <em className="font-medium">Curious Minds</em><br />
-              <em className="font-medium">Meets, Shares & Innovate</em>
-            </h1>
-            
-            <div className="max-w-4xl mx-auto mb-16">
-              <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light italic tracking-wide" style={{ color: 'hsl(var(--medium-gray))' }}>
-                Whether you're testing a theory, starting a project, or just exploring ideas<br />
-                this is your space to think, share, and grow with like-minded thinkers
-              </p>
-            </div>
-          </div>
-    
+  {/* Precise Floating Images */}
+  <img
+    src="/svg1.jpg"
+    alt="Planet Icon"
+    className="absolute top-[7rem] left-[10%] w-66 h-44 opacity-90 object-contain"
+  />
+  <img
+    src="/svg3.jpg"
+    alt="Atom Icon"
+    className="absolute top-[6rem] left-1/2 transform -translate-x-1/2 w-25 h-25 opacity-90 object-contain"
+  />
+  <img
+    src="/svg2.jpg"
+    alt="Brain Icon"
+    className="absolute top-[5.5rem] right-[7%] w-54 h-44 opacity-90 object-contain"
+  />
+  <img
+    src="/svg4.jpg"
+    alt="Bulb Icon"
+    className="absolute top-[14rem] right-[5%] w-28 h-28 opacity-90 object-contain"
+  />
+  <img
+    src="/svg5.jpg"
+    alt="Atom Icon"
+    className="absolute top-[18rem] left-[43%] transform -translate-x-1/2 w-29 h-29 opacity-90 object-contain"
+  />
+
+  {/* Main Content */}
+  <div className="relative z-10 mt-20">
+    <h1 className="font-serif text-4xl md:text-4xl lg:text-5xl xl:text-7xl mb-8 leading-[1.1] italic font-light tracking-wide">
+      Where <em className="font-medium">Curious Minds</em><br />
+      <em className="font-medium">Meets, Shares & Innovate.</em>
+    </h1>
+
+    <div className="max-w-4xl mx-auto mb-16">
+      <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light italic tracking-wide text-gray-600">
+        Whether you're testing a theory, starting a project, or just exploring ideas<br />
+        this is your space to think, share, and grow with like-minded thinkers
+      </p>
+    </div>
           {/* Get Started Button */}
-          <div className="mb-20">
-            <button 
-              onClick={handleGetStarted}
-              className="italic font-serif border-2 rounded-2xl px-12 py-5 text-xl bg-transparent hover:bg-gray-50 hover:shadow-xl transition-all duration-300 transform hover:scale-105"
-              style={{ 
-                color: 'hsl(var(--charcoal))',
-                borderColor: 'hsl(var(--charcoal))'
-              }}
-            >
-              Get Started
-            </button>
+          <div className="mb-7">
+           <button
+  onClick={handleGetStarted}
+  className="font-serif italic text-xl px-18 py-5 border rounded-xl bg-white text-black relative"
+  style={{
+    borderColor: '#222', // dark gray border
+    boxShadow: '4px 4px 0 #4b4b4b', // bottom-right drop shadow
+    transition: 'transform 0.2s ease',
+  }}
+>
+  Get Started
+</button>
           </div>
     
           {/* Down Arrow */}
           <div className="arrow-bounce">
-            <svg className="w-14 h-14 opacity-50 mx-auto" style={{ color: 'hsl(var(--charcoal))' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-              <path d="M12 5v14M19 12l-7 7-7-7" />
-            </svg>
+            <svg
+  className="w-15 h-38 opacity-60 mx-auto"
+  viewBox="0 0 24 48"
+  fill="none"
+  stroke="currentColor"
+  strokeWidth="2"
+>
+  <line x1="12" y1="0" x2="12" y2="34" />
+  <polyline points="5,28 12,35 19,28" />
+</svg>
           </div>
         </div>
       </section>
@@ -200,7 +190,37 @@ const LandingPage = () => {
         title: "AI & Machine Learning",
         subtitle: "The Mind of the Machine",
         imageAlt: "AI",
-      },
+            },
+      {
+    title: "Astronomy",
+    subtitle: "Beyond the Sky: Stars & Planets",
+    imageAlt: "Astronomy",
+  },
+  {
+    title: "Robotics",
+    subtitle: "Engineering the Future of Automation",
+    imageAlt: "Robotics",
+  },
+  {
+    title: "Biotechnology",
+    subtitle: "Innovation at the Cellular Level",
+    imageAlt: "Biotech",
+  },
+  {
+    title: "Mathematical Models",
+    subtitle: "Simulating the Logic of the Universe",
+    imageAlt: "Math",
+  },
+  {
+    title: "Nanotechnology",
+    subtitle: "Manipulating Matter Atom by Atom",
+    imageAlt: "Nanotech",
+  },
+  {
+    title: "Astrobiology",
+    subtitle: "Life Among the Stars",
+    imageAlt: "Astrobiology",
+  }
     ].map((item, index) => (
       <div key={index} className="min-w-[250px] bg-white rounded-lg shadow-md p-4 flex-shrink-0">
         <div className="w-full h-40 bg-gray-200 rounded-md mb-4 flex items-center justify-center">

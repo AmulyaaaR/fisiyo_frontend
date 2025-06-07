@@ -1,5 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import TopBar from "./TopBar";
+import { useState } from "react";
 
 import {
   Star,
@@ -18,6 +19,7 @@ import "./animations.css";
 
 const LandingPage = () => {
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
+  const [isExploded, setIsExploded] = useState(false);
 
   const handleGetStarted = async () => {
     if (!isAuthenticated) {
@@ -25,6 +27,14 @@ const LandingPage = () => {
         appState: { returnTo: "/post-login-check" },
       });
     }
+  };
+
+  const handlePlanetClick = () => {
+    setIsExploded(true);
+    // Reset after animation completes
+    setTimeout(() => {
+      setIsExploded(false);
+    }, 2000);
   };
 
   return (
@@ -109,31 +119,16 @@ const LandingPage = () => {
 
 
     
-      {/* Enhanced Unlock Your Potential Section with Realistic Solar System */}
+      {/* Enhanced Unlock Your Potential Section with Interactive Solar System */}
       <section className="max-w-7xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-10">
-        {/* Realistic Solar System */}
+        {/* Interactive Solar System */}
         <div className="relative md:w-2/3 w-full h-[700px] rounded-xl flex items-center justify-center overflow-hidden">
-          {/* Space Background */}
-          <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-purple-950 to-black rounded-xl">
-            {/* Stars */}
-            <div className="absolute inset-0">
-              {[...Array(50)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 3}s`,
-                    animationDuration: `${2 + Math.random() * 3}s`,
-                  }}
-                />
-              ))}
-            </div>
-          </div>
-
-          {/* Central Sun */}
-          <div className="absolute w-24 h-24 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 rounded-full shadow-2xl z-20 flex items-center justify-center">
+          
+          {/* Central Sun - Clickable */}
+          <div 
+            className="absolute w-24 h-24 bg-gradient-to-br from-yellow-300 via-orange-400 to-red-500 rounded-full shadow-2xl z-20 flex items-center justify-center cursor-pointer hover:scale-110 transition-transform duration-300"
+            onClick={handlePlanetClick}
+          >
             <div className="w-20 h-20 bg-gradient-to-br from-yellow-200 via-orange-300 to-red-400 rounded-full animate-pulse">
               <div className="w-full h-full bg-gradient-to-br from-yellow-100 via-orange-200 to-red-300 rounded-full animate-spin-slow opacity-80" />
             </div>
@@ -141,83 +136,55 @@ const LandingPage = () => {
             <div className="absolute inset-0 w-32 h-32 -m-4 bg-gradient-to-br from-yellow-300/30 via-orange-400/20 to-red-500/10 rounded-full blur-xl animate-pulse" />
           </div>
 
-          {/* Orbital Paths */}
-          <div className="absolute w-[300px] h-[220px] border border-blue-300/20 rounded-[50%] animate-spin-slow" style={{ animationDuration: '40s' }} />
-          <div className="absolute w-[420px] h-[300px] border border-purple-300/20 rounded-[50%] animate-spin-reverse" style={{ animationDuration: '60s' }} />
-          <div className="absolute w-[550px] h-[400px] border border-cyan-300/20 rounded-[50%] animate-spin-slow" style={{ animationDuration: '80s' }} />
-          <div className="absolute w-[680px] h-[500px] border border-green-300/20 rounded-[50%] animate-spin-reverse" style={{ animationDuration: '100s' }} />
+          {/* Orbital Paths - Only these move */}
+          <div className="absolute w-[300px] h-[220px] border border-blue-300/30 rounded-[50%] animate-spin-slow" style={{ animationDuration: '40s' }} />
+          <div className="absolute w-[420px] h-[300px] border border-purple-300/30 rounded-[50%] animate-spin-reverse" style={{ animationDuration: '60s' }} />
+          <div className="absolute w-[550px] h-[400px] border border-cyan-300/30 rounded-[50%] animate-spin-slow" style={{ animationDuration: '80s' }} />
+          <div className="absolute w-[680px] h-[500px] border border-green-300/30 rounded-[50%] animate-spin-reverse" style={{ animationDuration: '100s' }} />
 
-          {/* Orbiting Planets with Feature Cards */}
-          {/* Planet 1 - XP & Levels */}
-          <div className="absolute animate-orbit-1">
-            <div className="relative">
-              <div className="w-8 h-8 bg-gradient-to-br from-blue-400 to-blue-600 rounded-full shadow-lg mb-4 animate-planet-spin">
-                <div className="w-6 h-6 bg-gradient-to-br from-blue-300 to-blue-500 rounded-full m-1 opacity-80" />
-              </div>
-              <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
-                <Star className="text-blue-600 mb-3" size={40} />
-                <h4 className="font-semibold text-lg text-gray-800">XP & Levels</h4>
-                <p className="text-sm text-gray-600 mt-2">Earn experience points and level up through scientific achievements</p>
-              </div>
+          {/* Static Feature Cards with Pop-out Animation */}
+          {/* Card 1 - XP & Levels */}
+          <div className={`absolute top-[8%] left-[20%] transition-all duration-1000 ease-out ${
+            isExploded ? 'transform scale-125 -translate-x-20 -translate-y-10' : ''
+          }`}>
+            <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
+              <Star className="text-blue-600 mb-3" size={40} />
+              <h4 className="font-semibold text-lg text-gray-800">XP & Levels</h4>
+              <p className="text-sm text-gray-600 mt-2">Earn experience points and level up through scientific achievements</p>
             </div>
           </div>
 
-          {/* Planet 2 - Streaks & Challenges */}
-          <div className="absolute animate-orbit-2">
-            <div className="relative">
-              <div className="w-10 h-10 bg-gradient-to-br from-red-400 to-red-600 rounded-full shadow-lg mb-4 animate-planet-spin">
-                <div className="w-8 h-8 bg-gradient-to-br from-red-300 to-red-500 rounded-full m-1 opacity-80" />
-              </div>
-              <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
-                <Trophy className="text-red-600 mb-3" size={40} />
-                <h4 className="font-semibold text-lg text-gray-800">Streaks & Challenges</h4>
-                <p className="text-sm text-gray-600 mt-2">Maintain learning streaks and complete daily science challenges</p>
-              </div>
+          {/* Card 2 - Streaks & Challenges */}
+          <div className={`absolute top-[55%] left-[5%] transition-all duration-1000 ease-out ${
+            isExploded ? 'transform scale-125 -translate-x-16 translate-y-8' : ''
+          }`}>
+            <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
+              <Trophy className="text-red-600 mb-3" size={40} />
+              <h4 className="font-semibold text-lg text-gray-800">Streaks & Challenges</h4>
+              <p className="text-sm text-gray-600 mt-2">Maintain learning streaks and complete daily science challenges</p>
             </div>
           </div>
 
-          {/* Planet 3 - Badges & Leaderboards */}
-          <div className="absolute animate-orbit-3">
-            <div className="relative">
-              <div className="w-12 h-12 bg-gradient-to-br from-green-400 to-green-600 rounded-full shadow-lg mb-4 animate-planet-spin">
-                <div className="w-10 h-10 bg-gradient-to-br from-green-300 to-green-500 rounded-full m-1 opacity-80" />
-              </div>
-              <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
-                <Award className="text-green-600 mb-3" size={40} />
-                <h4 className="font-semibold text-lg text-gray-800">Badges & Leaderboards</h4>
-                <p className="text-sm text-gray-600 mt-2">Unlock achievements and compete with fellow researchers</p>
-              </div>
+          {/* Card 3 - Badges & Leaderboards */}
+          <div className={`absolute top-[70%] left-[60%] transition-all duration-1000 ease-out ${
+            isExploded ? 'transform scale-125 translate-x-20 translate-y-12' : ''
+          }`}>
+            <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
+              <Award className="text-green-600 mb-3" size={40} />
+              <h4 className="font-semibold text-lg text-gray-800">Badges & Leaderboards</h4>
+              <p className="text-sm text-gray-600 mt-2">Unlock achievements and compete with fellow researchers</p>
             </div>
           </div>
 
-          {/* Planet 4 - Communities */}
-          <div className="absolute animate-orbit-4">
-            <div className="relative">
-              <div className="w-14 h-14 bg-gradient-to-br from-purple-400 to-purple-600 rounded-full shadow-lg mb-4 animate-planet-spin">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-300 to-purple-500 rounded-full m-1 opacity-80" />
-              </div>
-              <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
-                <Users className="text-purple-600 mb-3" size={40} />
-                <h4 className="font-semibold text-lg text-gray-800">Communities</h4>
-                <p className="text-sm text-gray-600 mt-2">Join vibrant scientific communities and collaborate globally</p>
-              </div>
+          {/* Card 4 - Communities */}
+          <div className={`absolute top-[25%] left-[65%] transition-all duration-1000 ease-out ${
+            isExploded ? 'transform scale-125 translate-x-16 -translate-y-8' : ''
+          }`}>
+            <div className="w-56 h-56 bg-white/95 backdrop-blur-sm shadow-2xl rounded-2xl flex flex-col justify-center items-center text-center p-6 border border-white/50">
+              <Users className="text-purple-600 mb-3" size={40} />
+              <h4 className="font-semibold text-lg text-gray-800">Communities</h4>
+              <p className="text-sm text-gray-600 mt-2">Join vibrant scientific communities and collaborate globally</p>
             </div>
-          </div>
-
-          {/* Floating Particles */}
-          <div className="absolute inset-0">
-            {[...Array(20)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute w-2 h-2 bg-gradient-to-br from-cyan-300 to-blue-400 rounded-full animate-float-particle opacity-60"
-                style={{
-                  left: `${Math.random() * 100}%`,
-                  top: `${Math.random() * 100}%`,
-                  animationDelay: `${Math.random() * 5}s`,
-                  animationDuration: `${8 + Math.random() * 4}s`,
-                }}
-              />
-            ))}
           </div>
         </div>
 
@@ -225,7 +192,7 @@ const LandingPage = () => {
         <div className="md:w-1/3 w-full text-left">
           <h2 className="text-4xl font-bold mb-4">Unlock Your Potential Through Your Posts</h2>
           <p className="text-gray-600 text-lg">
-            Fisiyo combines the thrill of gamification with the depth of scientific exploration. Join our cosmic community where knowledge orbits around collaboration.
+            Fisiyo combines the thrill of gamification with the depth of scientific exploration. Click the sun to see our features explode into action!
           </p>
         </div>
       </section>

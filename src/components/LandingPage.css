@@ -1,0 +1,390 @@
+.star {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle linear infinite, moveStars linear infinite;
+  box-shadow: 0 0 6px white, 0 0 12px white;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}
+
+@keyframes moveStars {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(-100px) translateY(-50px);
+  }
+}
+
+.meteoroid {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: linear-gradient(45deg, #fff, #ff6b6b);
+  border-radius: 50%;
+  animation: meteor linear forwards;
+  box-shadow: 0 0 8px #ff6b6b, 0 0 16px #ff6b6b;
+}
+
+@keyframes meteor {
+  0% {
+    transform: translateX(0) translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100vw) translateY(50vh);
+    opacity: 0;
+  }
+}
+
+/* Typing Effect */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    text-shadow: 0 0 5px currentColor, 0 0 10px currentColor, 0 0 15px currentColor;
+  }
+  50% {
+    text-shadow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+  }
+}
+
+@keyframes bounceEnhanced {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-left {
+  animation: fadeInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-bounce-slow {
+  animation: bounceEnhanced 3s infinite;
+}
+
+/* Solar System Styles */
+.solar-system-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.central-planet {
+  transform: rotateX(-20deg) rotateY(10deg);
+}
+
+.orbit {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+.orbit-path {
+  position: absolute;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+}
+
+.orbit-path-1 {
+  width: 200px;
+  height: 80px;
+  transform: translate(-50%, -50%) rotateX(75deg);
+}
+
+.orbit-path-2 {
+  width: 320px;
+  height: 120px;
+  transform: translate(-50%, -50%) rotateX(75deg);
+}
+
+.orbit-path-3 {
+  width: 480px;
+  height: 180px;
+  transform: translate(-50%, -50%) rotateX(75deg);
+}
+
+.orbit-path-4 {
+  width: 640px;
+  height: 240px;
+  transform: translate(-50%, -50%) rotateX(75deg);
+}
+
+.orbit-1 {
+  animation: rotate 15s linear infinite;
+}
+
+.orbit-2 {
+  animation: rotate 25s linear infinite;
+}
+
+.orbit-3 {
+  animation: rotate 35s linear infinite;
+}
+
+.orbit-4 {
+  animation: rotate 45s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotateZ(0deg);
+  }
+  to {
+    transform: rotateZ(360deg);
+  }
+}
+
+.planet {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform-style: preserve-3d;
+}
+
+.planet-1 {
+  transform: translate(-50%, -50%) translateX(100px) rotateX(-75deg);
+}
+
+.planet-2 {
+  transform: translate(-50%, -50%) translateX(160px) rotateX(-75deg);
+}
+
+.planet-3 {
+  transform: translate(-50%, -50%) translateX(240px) rotateX(-75deg);
+}
+
+.planet-3-opposite {
+  transform: translate(-50%, -50%) translateX(-240px) rotateX(-75deg);
+}
+
+.planet-4 {
+  transform: translate(-50%, -50%) translateX(320px) rotateX(-75deg);
+}
+
+.planet-4-opposite {
+  transform: translate(-50%, -50%) translateX(-320px) rotateX(-75deg);
+}
+
+.card {
+  width: 120px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  transition: all 0.3s ease;
+  transform: rotateX(75deg) rotateY(0deg) rotateZ(0deg);
+}
+
+.card:hover {
+  transform: rotateX(75deg) rotateY(0deg) rotateZ(0deg) scale(1.05);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+/* Mobile Responsive Adjustments */
+@media (max-width: 768px) {
+  .star {
+    width: 2px;
+    height: 2px;
+  }
+
+  .meteoroid {
+    width: 2px;
+    height: 2px;
+  }
+
+  .orbit-path-1 {
+    width: 120px;
+    height: 50px;
+  }
+
+  .orbit-path-2 {
+    width: 180px;
+    height: 70px;
+  }
+
+  .orbit-path-3 {
+    width: 240px;
+    height: 90px;
+  }
+
+  .orbit-path-4 {
+    width: 300px;
+    height: 110px;
+  }
+
+  .planet-1 {
+    transform: translate(-50%, -50%) translateX(60px) rotateX(-75deg);
+  }
+
+  .planet-2 {
+    transform: translate(-50%, -50%) translateX(90px) rotateX(-75deg);
+  }
+
+  .planet-3 {
+    transform: translate(-50%, -50%) translateX(120px) rotateX(-75deg);
+  }
+
+  .planet-3-opposite {
+    transform: translate(-50%, -50%) translateX(-120px) rotateX(-75deg);
+  }
+
+  .planet-4 {
+    transform: translate(-50%, -50%) translateX(150px) rotateX(-75deg);
+  }
+
+  .planet-4-opposite {
+    transform: translate(-50%, -50%) translateX(-150px) rotateX(-75deg);
+  }
+
+  .card {
+    width: 80px;
+    height: 60px;
+    padding: 4px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .orbit-path-1 {
+    width: 100px;
+    height: 40px;
+  }
+
+  .orbit-path-2 {
+    width: 140px;
+    height: 55px;
+  }
+
+  .orbit-path-3 {
+    width: 180px;
+    height: 70px;
+  }
+
+  .orbit-path-4 {
+    width: 220px;
+    height: 85px;
+  }
+
+  .planet-1 {
+    transform: translate(-50%, -50%) translateX(50px) rotateX(-75deg);
+  }
+
+  .planet-2 {
+    transform: translate(-50%, -50%) translateX(70px) rotateX(-75deg);
+  }
+
+  .planet-3 {
+    transform: translate(-50%, -50%) translateX(90px) rotateX(-75deg);
+  }
+
+  .planet-3-opposite {
+    transform: translate(-50%, -50%) translateX(-90px) rotateX(-75deg);
+  }
+
+  .planet-4 {
+    transform: translate(-50%, -50%) translateX(110px) rotateX(-75deg);
+  }
+
+  .planet-4-opposite {
+    transform: translate(-50%, -50%) translateX(-110px) rotateX(-75deg);
+  }
+
+  .card {
+    width: 70px;
+    height: 50px;
+    padding: 2px;
+  }
+}
+
+/* Scrollbar hide for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Additional responsive utilities */
+@media (max-width: 640px) {
+  .solar-system-container {
+    height: 300px !important;
+  }
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Enhanced backdrop blur support */
+@supports (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
+
+@supports not (backdrop-filter: blur(10px)) {
+  .backdrop-blur-sm {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+}

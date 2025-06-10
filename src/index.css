@@ -1,6 +1,23 @@
 @import "tailwindcss"; 
 
-@layer utilities {
+@font-face {
+  font-family: 'Cinzel';
+  src: url('./assets/fonts/Cinzel-Regular.ttf') format('truetype');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Cinzel';
+  src: url('./assets/fonts/Cinzel-Bold.ttf') format('truetype');
+  font-weight: 700;
+}
+@font-face {
+  font-family: 'Cinzel';
+  src: url('./assets/fonts/Cinzel-Italic.ttf') format('truetype');
+  font-style: italic;
+  font-weight: 400;
+}     
+/* @layer utilities {
   @keyframes fade-in {
     from {
       transform: translateY(20px);
@@ -14,6 +31,10 @@
 
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
+  }
+
+   .card-untilt {
+    transform: rotateX(40deg) rotateY(-25deg); 
   }
 }
 
@@ -32,4 +53,4 @@
 
 .blob {
   animation: float 18s ease-in-out infinite;
-}
+} */
